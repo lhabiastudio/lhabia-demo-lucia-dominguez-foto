@@ -1,0 +1,1197 @@
+<!-- DEMO — Diseño conceptual por LhabiaStudio. No autorizado para uso comercial -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucía Domínguez · Fotógrafa de bodas y eventos en Madrid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    /*  Reset & Base  */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --gold:        #C4986A;
+      --gold-light:  #D9B48F;
+      --gold-dark:   #A07848;
+      --dark:        #1A1A1A;
+      --dark-mid:    #2C2C2C;
+      --light:       #FAFAF8;
+      --light-mid:   #F0EDE8;
+      --text-body:   #3D3830;
+      --text-muted:  #7A7068;
+      --ff-serif:    'Playfair Display', Georgia, serif;
+      --ff-body:     -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --max-w:       1100px;
+      --transition:  0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      /* accent alias for icon utility */
+      --accent:      #C4986A;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--ff-body);
+      color: var(--text-body);
+      background: var(--light);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    /*  Scroll-reveal  */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.34s; }
+    .reveal-delay-4 { transition-delay: 0.46s; }
+
+    /*  Typography helpers  */
+    .serif { font-family: var(--ff-serif); }
+
+    /*  Container  */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+    /*  Gold divider  */
+    .gold-line {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.25rem auto;
+    }
+
+    /*  Section label  */
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /*  Icon utility  */
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      margin-right: 6px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /*  Buttons  */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--light);
+    }
+    .btn-gold:hover {
+      background: var(--gold-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(196, 152, 106, 0.35);
+    }
+    .btn-gold:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .btn-gold:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--light);
+      transform: translateY(-1px);
+    }
+    .btn-outline:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .btn-outline:active {
+      transform: translateY(0);
+    }
+
+    /*
+       1. HERO
+     */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background:
+        linear-gradient(160deg,
+          rgba(26,26,26,0.92) 0%,
+          rgba(44,28,18,0.88) 40%,
+          rgba(26,26,26,0.95) 100%),
+        radial-gradient(ellipse 120% 80% at 70% 40%,
+          #4A2E1A 0%,
+          #2C1A0E 35%,
+          #1A1008 70%,
+          #0E0A06 100%);
+    }
+
+    /* Decorative geometric shapes as abstract photo suggestion */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 65% 45%,
+          rgba(196,152,106,0.12) 0%,
+          transparent 65%),
+        radial-gradient(ellipse 40% 60% at 30% 60%,
+          rgba(196,152,106,0.06) 0%,
+          transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Abstract light streak — simulates a window of natural light */
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 15%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(196,152,106,0.18) 25%,
+        rgba(196,152,106,0.28) 50%,
+        rgba(196,152,106,0.12) 75%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 6rem 1.5rem 4rem;
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.75rem;
+      opacity: 0.85;
+    }
+
+    .hero-name {
+      font-family: var(--ff-serif);
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      font-weight: 400;
+      color: var(--light);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+      font-weight: 400;
+      color: rgba(250,250,248,0.65);
+      letter-spacing: 0.06em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.55rem);
+      color: rgba(250,250,248,0.9);
+      line-height: 1.5;
+      max-width: 560px;
+      margin-inline: auto;
+      margin-bottom: 3rem;
+    }
+
+    .hero-tagline strong {
+      color: var(--gold-light);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(250,250,248,0.35);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .scroll-arrow {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(196,152,106,0.6), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+
+    /*
+       2. PORTFOLIO GRID
+     */
+    #portfolio {
+      padding: 96px 0 80px;
+      background: var(--light);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 em {
+      font-style: italic;
+      color: var(--gold-dark);
+    }
+
+    .section-header p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-inline: auto;
+      line-height: 1.7;
+    }
+
+    /* Portfolio section-label with camera icon alignment */
+    #portfolio .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .portfolio-card {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .portfolio-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-card:hover .card-bg {
+      transform: scale(1.04);
+    }
+
+    .portfolio-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s ease;
+    }
+
+    /* Individual gradient palettes per card */
+    .card-1 .card-bg {
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, #8B5E3C 0%, #4A2C14 45%, #1E0E06 100%),
+        linear-gradient(135deg, #C4986A22 0%, transparent 60%);
+    }
+    .card-2 .card-bg {
+      background:
+        radial-gradient(ellipse 70% 80% at 35% 55%, #2C3E50 0%, #1A252F 50%, #0D1520 100%),
+        linear-gradient(225deg, #4A6FA5 0%, transparent 50%);
+    }
+    .card-3 .card-bg {
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 30%, #6B4C3B 0%, #3D2415 50%, #1A0E08 100%),
+        linear-gradient(180deg, #C4986A18 0%, transparent 70%);
+    }
+    .card-4 .card-bg {
+      background:
+        radial-gradient(ellipse 60% 90% at 70% 60%, #3A3A2E 0%, #22221A 50%, #0E0E0A 100%),
+        linear-gradient(315deg, #D4C5A9 0%, transparent 45%);
+    }
+    .card-5 .card-bg {
+      background:
+        radial-gradient(ellipse 100% 60% at 25% 45%, #7C5C4A 0%, #4A3020 50%, #1E1208 100%),
+        linear-gradient(45deg, #E8D5B8 0%, transparent 40%);
+    }
+    .card-6 .card-bg {
+      background:
+        radial-gradient(ellipse 75% 75% at 55% 50%, #2E3440 0%, #1A1E28 50%, #0A0C10 100%),
+        linear-gradient(270deg, #7090C0 0%, transparent 55%);
+    }
+
+    /* Subtle grain texture overlay */
+    .card-grain {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.78) 0%, transparent 55%);
+      opacity: 0.7;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+
+    .card-label {
+      color: var(--light);
+      font-family: var(--ff-serif);
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    .card-label span {
+      display: block;
+      font-family: var(--ff-body);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.25rem;
+    }
+
+    /*
+       3. TESTIMONIOS
+     */
+    #testimonios {
+      padding: 96px 0;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #testimonios::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 80%, rgba(196,152,106,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(196,152,106,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonio-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(196,152,106,0.18);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .testimonio-quote {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      font-family: var(--ff-serif);
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.3;
+    }
+
+    .testimonio-stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .testimonio-stars .icon {
+      margin-right: 0;
+      color: var(--gold);
+    }
+
+    .testimonio-text {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: rgba(250,250,248,0.85);
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+
+    .testimonio-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(196,152,106,0.4);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      color: var(--gold-light);
+    }
+
+    /* Each avatar gets its own soft gradient background */
+    .avatar-1 { background: radial-gradient(circle, #4A2C14 0%, #2A1608 100%); }
+    .avatar-2 { background: radial-gradient(circle, #2C3A2E 0%, #141E16 100%); }
+
+    .author-info strong {
+      display: block;
+      font-family: var(--ff-serif);
+      font-weight: 600;
+      color: rgba(250,250,248,0.9);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .author-info small {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    .placeholder-badge {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+    }
+
+    /*
+       4. SERVICIOS Y PRECIOS
+     */
+    #servicios {
+      padding: 96px 0;
+      background: var(--light-mid);
+    }
+
+    .price-note {
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .servicio-card {
+      background: var(--light);
+      border: 1px solid rgba(196,152,106,0.2);
+      border-radius: 4px;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .servicio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    .servicio-card.featured {
+      border-color: var(--gold);
+      background: var(--light);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -0.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--light);
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .servicio-tier {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .servicio-name {
+      font-family: var(--ff-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .servicio-price {
+      font-family: var(--ff-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .servicio-price small {
+      font-family: var(--ff-body);
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .servicio-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .servicio-features li {
+      font-size: 1rem;
+      color: var(--text-body);
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--light-mid);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.4;
+    }
+
+    /* Remove pseudo-element dot — SVG checkmark takes over */
+    .servicio-features li::before {
+      display: none;
+    }
+
+    .servicio-features .icon {
+      margin-right: 0;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /*
+       5. CTA FINAL
+     */
+    #cta-final {
+      padding: 96px 0;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 50%,
+          rgba(196,152,106,0.1) 0%,
+          transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-final-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+    .cta-final-heading {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--light);
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-final-heading em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .cta-final-sub {
+      font-size: 1rem;
+      color: rgba(250,250,248,0.55);
+      line-height: 1.7;
+      margin-bottom: 2.75rem;
+      max-width: 480px;
+      margin-inline: auto;
+    }
+
+    .cta-heart {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.75rem;
+    }
+
+    .cta-heart .icon {
+      margin-right: 0;
+      color: var(--gold-light);
+    }
+
+    .cta-available {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,250,248,0.4);
+      margin-top: 1.5rem;
+    }
+
+    .dot-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #6EC97C;
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /*
+       6. FOOTER
+     */
+    footer {
+      background: var(--dark);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(196,152,106,0.12);
+    }
+
+    .footer-brand {
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      color: rgba(250,250,248,0.25);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-meta {
+      font-size: 0.72rem;
+      color: rgba(250,250,248,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-meta a {
+      color: var(--gold);
+      opacity: 0.7;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .footer-meta a:hover {
+      opacity: 1;
+    }
+
+    .footer-disclaimer {
+      font-size: 12px;
+      color: #999;
+      margin-top: 0.5rem;
+      letter-spacing: 0;
+      font-style: italic;
+    }
+
+    /*
+       RESPONSIVE — tablet (≥768px)
+     */
+    @media (min-width: 768px) {
+      .hero-cta-group {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonios-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .servicios-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /*
+       RESPONSIVE — desktop (≥1024px)
+     */
+    @media (min-width: 1024px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .card-overlay {
+        opacity: 0.5;
+      }
+    }
+
+    /*
+       RESPONSIVE — mobile (≤480px)
+     */
+    @media (max-width: 480px) {
+      #portfolio,
+      #testimonios,
+      #servicios,
+      #cta-final {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+
+      .servicio-card {
+        padding: 24px;
+        width: 100%;
+      }
+
+      .testimonio-card {
+        padding: 1.75rem 1.25rem;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        overflow-x: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!--  1. HERO  -->
+  <section id="hero" aria-label="Presentación">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Madrid · Bodas · Eventos · Retratos</p>
+      <h1 class="hero-name">Lucía<br><em>Domínguez</em></h1>
+      <p class="hero-title">Fotógrafa de bodas y eventos en Madrid</p>
+      <p class="hero-tagline">
+        Tu trabajo merece algo más que un feed de Instagram.<br>
+        <strong>Merece un espacio propio donde cada imagen cuente su historia.</strong>
+      </p>
+      <div class="hero-cta-group">
+        <a href="#servicios" class="btn btn-gold">Ver disponibilidad 2026</a>
+        <a href="#portfolio" class="btn btn-outline">Ver portfolio</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <div class="scroll-arrow"></div>
+      <span>Descubre más</span>
+    </div>
+  </section>
+
+  <!--  2. PORTFOLIO  -->
+  <section id="portfolio" aria-label="Portfolio">
+    <div class="container">
+      <header class="section-header reveal">
+        <p class="section-label">
+          <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+          Portfolio selecto
+        </p>
+        <span class="gold-line"></span>
+        <h2>Momentos que<br><em>permanecen para siempre</em></h2>
+        <p>Cada boda, cada evento, cada mirada capturada es una historia que merece ser contada con la luz y el silencio que le corresponden.</p>
+      </header>
+
+      <div class="portfolio-grid">
+
+        <article class="portfolio-card card-1 reveal reveal-delay-1" aria-label="Boda en Sevilla" tabindex="0">
+          <div class="card-bg"></div>
+          <div class="card-grain"></div>
+          <div class="card-overlay">
+            <div class="card-label">
+              <span>Boda</span>
+              Boda en Sevilla
+            </div>
+          </div>
+        </article>
+
+        <article class="portfolio-card card-2 reveal reveal-delay-2" aria-label="Evento corporativo" tabindex="0">
+          <div class="card-bg"></div>
+          <div class="card-grain"></div>
+          <div class="card-overlay">
+            <div class="card-label">
+              <span>Corporativo</span>
+              Evento corporativo
+            </div>
+          </div>
+        </article>
+
+        <article class="portfolio-card card-3 reveal reveal-delay-1" aria-label="Preboda" tabindex="0">
+          <div class="card-bg"></div>
+          <div class="card-grain"></div>
+          <div class="card-overlay">
+            <div class="card-label">
+              <span>Preboda</span>
+              Preboda en el campo
+            </div>
+          </div>
+        </article>
+
+        <article class="portfolio-card card-4 reveal reveal-delay-2" aria-label="Boda en finca" tabindex="0">
+          <div class="card-bg"></div>
+          <div class="card-grain"></div>
+          <div class="card-overlay">
+            <div class="card-label">
+              <span>Boda</span>
+              Boda en finca andaluza
+            </div>
+          </div>
+        </article>
+
+        <article class="portfolio-card card-5 reveal reveal-delay-3" aria-label="Celebración íntima" tabindex="0">
+          <div class="card-bg"></div>
+          <div class="card-grain"></div>
+          <div class="card-overlay">
+            <div class="card-label">
+              <span>Íntimo</span>
+              Celebración íntima
+            </div>
+          </div>
+        </article>
+
+        <article class="portfolio-card card-6 reveal reveal-delay-4" aria-label="Gala de empresa" tabindex="0">
+          <div class="card-bg"></div>
+          <div class="card-grain"></div>
+          <div class="card-overlay">
+            <div class="card-label">
+              <span>Gala</span>
+              Gala de empresa en Madrid
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!--  3. TESTIMONIOS  -->
+  <section id="testimonios" aria-label="Testimonios">
+    <div class="container">
+      <header class="section-header reveal">
+        <p class="section-label" style="color: var(--gold-light);">Lo que dicen</p>
+        <span class="gold-line"></span>
+        <h2 style="color: var(--light);">Palabras que<br><em>nos llegan al alma</em></h2>
+      </header>
+
+      <div class="testimonios-grid">
+
+        <article class="testimonio-card reveal reveal-delay-1">
+          <div class="testimonio-quote" aria-hidden="true">"</div>
+          <blockquote>
+            <div class="testimonio-stars" aria-label="5 estrellas">
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+            </div>
+            <p class="testimonio-text">
+              Cuando vi las fotos de nuestra boda no pude contener las lágrimas. Lucía no solo capturó el evento — capturó la emoción que vivíamos por dentro, esa mirada entre nosotros antes de entrar a la iglesia que ningún otro fotógrafo hubiera visto. Cada imagen tiene una calidad que jamás esperábamos y que nos acompañará de por vida.
+            </p>
+            <footer class="testimonio-author">
+              <div class="author-avatar avatar-1" aria-hidden="true">S</div>
+              <div class="author-info">
+                <strong>Sofía y Carlos Martín</strong>
+                <small>Boda en Sevilla, Septiembre 2024</small>
+              </div>
+            </footer>
+            <p class="placeholder-badge">Testimonio de ejemplo</p>
+          </blockquote>
+        </article>
+
+        <article class="testimonio-card reveal reveal-delay-2">
+          <div class="testimonio-quote" aria-hidden="true">"</div>
+          <blockquote>
+            <div class="testimonio-stars" aria-label="5 estrellas">
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+            </div>
+            <p class="testimonio-text">
+              Llevábamos años buscando una fotógrafa para nuestros eventos de empresa que entendiera el equilibrio entre lo profesional y lo humano. Con Lucía encontramos exactamente eso: imágenes que transmiten la esencia de nuestra marca sin perder ni un gramo de calidez. El equipo quedó encantado con el resultado final.
+            </p>
+            <footer class="testimonio-author">
+              <div class="author-avatar avatar-2" aria-hidden="true">A</div>
+              <div class="author-info">
+                <strong>Ana Villanueva</strong>
+                <small>Directora de Comunicación · Gala Anual 2024</small>
+              </div>
+            </footer>
+            <p class="placeholder-badge">Testimonio de ejemplo</p>
+          </blockquote>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!--  4. SERVICIOS Y PRECIOS  -->
+  <section id="servicios" aria-label="Servicios y precios">
+    <div class="container">
+      <header class="section-header reveal">
+        <p class="section-label">Servicios</p>
+        <span class="gold-line"></span>
+        <h2>Una inversión en<br><em>recuerdos que duran</em></h2>
+        <p>Tres propuestas pensadas para adaptarse a cada celebración, sin renunciar nunca a la calidad editorial que caracteriza cada uno de mis trabajos.</p>
+      </header>
+
+      <p class="price-note reveal">Todos los precios son orientativos. Contacta para presupuesto personalizado.</p>
+
+      <div class="servicios-grid">
+
+        <article class="servicio-card reveal reveal-delay-1">
+          <p class="servicio-tier">Paquete Básico</p>
+          <h3 class="servicio-name">Esencial</h3>
+          <p class="servicio-price">Desde 1.200&nbsp;€ <small>(precio orientativo)</small></p>
+          <ul class="servicio-features">
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Cobertura de hasta 5 horas</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>200 fotografías editadas en alta resolución</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Galería privada online durante 12 meses</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Entrega en 4 semanas</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Licencia de uso personal</li>
+          </ul>
+          <a href="#cta-final" class="btn btn-outline" style="width:100%;text-align:center;">Consultar</a>
+        </article>
+
+        <article class="servicio-card featured reveal reveal-delay-2">
+          <div class="featured-badge">Más popular</div>
+          <p class="servicio-tier">Paquete Esencial</p>
+          <h3 class="servicio-name">Completo</h3>
+          <p class="servicio-price">Desde 2.500&nbsp;€ <small>(precio orientativo)</small></p>
+          <ul class="servicio-features">
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Cobertura completa — ceremonia, banquete y baile</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>400 fotografías editadas en alta resolución</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Sesión de preboda incluida (2 horas)</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Álbum digital diseñado a medida</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Galería privada online durante 24 meses</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Entrega en 3 semanas</li>
+          </ul>
+          <a href="#cta-final" class="btn btn-gold" style="width:100%;text-align:center;">Reservar fecha</a>
+        </article>
+
+        <article class="servicio-card reveal reveal-delay-3">
+          <p class="servicio-tier">Paquete Premium</p>
+          <h3 class="servicio-name">Exclusivo</h3>
+          <p class="servicio-price">Desde 4.000&nbsp;€ <small>(precio orientativo)</small></p>
+          <ul class="servicio-features">
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Cobertura ilimitada — día completo</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>600+ fotografías editadas en alta resolución</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Sesión de preboda y post-boda incluidas</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Álbum de tapa dura (30×30 cm, 60 páginas)</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Segundo fotógrafo incluido</li>
+            <li><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Entrega prioritaria en 2 semanas</li>
+          </ul>
+          <a href="#cta-final" class="btn btn-outline" style="width:100%;text-align:center;">Consultar</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!--  5. CTA FINAL  -->
+  <section id="cta-final" aria-label="Contacto y reserva">
+    <div class="cta-final-inner reveal">
+      <p class="section-label" style="color:var(--gold-light);">Reserva tu fecha</p>
+      <span class="gold-line"></span>
+      <div class="cta-heart">
+        <span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+      </div>
+      <h2 class="cta-final-heading">
+        Cada historia de amor<br>merece ser <em>contada con luz</em>
+      </h2>
+      <p class="cta-final-sub">
+        Las fechas de 2026 se están llenando. Si sientes que nuestras estéticas conectan, escríbeme hoy y reservemos tu día antes de que alguien más lo haga.
+      </p>
+      <a href="mailto:hola@luciadominguezfoto.es" class="btn btn-gold" style="font-size:0.9rem; padding:14px 44px;">
+        Reserva tu fecha
+      </a>
+      <div class="cta-available">
+        <div class="dot-green" aria-hidden="true"></div>
+        <span>Fechas disponibles en 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!--  FOOTER  -->
+  <footer>
+    <p class="footer-brand">Lucía Domínguez Fotografía</p>
+    <p class="footer-meta">
+      Diseño web por <a href="https://lhabiastudio.com" target="_blank" rel="noopener">LhabiaStudio</a>
+      &nbsp;·&nbsp; &copy; <span id="year"></span>
+    </p>
+    <p class="footer-disclaimer">Diseño conceptual — No autorizado para uso comercial</p>
+  </footer>
+
+  <!--  JS: Scroll reveal + year  -->
+  <script>
+    // Dynamic year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Intersection Observer for reveal animations
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Unobserve once revealed to save resources
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
+
+    revealEls.forEach((el) => observer.observe(el));
+
+    // Smooth anchor scroll with offset for any fixed nav (none here, but future-proof)
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
